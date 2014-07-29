@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="serviceFlow" xmlns="http://jbpm.org/4.4/jpdl">
+	<!-- 流程实例启动事件 -->
+	<on event="start">
+		<event-listener class="arch.jbpm.eventListener.ProcessStartEvent"></event-listener>
+	</on>
+	<!-- 流程实例结束事件 -->
+	<on event="end">
+		<event-listener class="arch.jbpm.eventListener.ProcessEndEvent"></event-listener>
+	</on>
+	<start name="start1" g="244,12,48,48">
+		<transition name="to 接收消息" to="接收消息" g="-69,-22" />
+	</start>
+	<state name="接收消息" g="219,81,92,52">
+		<transition name="to exclusive1" to="exclusive1" g="-40,-13" />
+	</state>
+	<decision name="exclusive1" g="238,159,48,48">
+		<handler class="arch.jbpm.decision.ServiceDecisionImpl" />
+		<transition name="to 客服消息" to="客服消息" g="-69,-22" />
+		<transition name="to end1" to="end1" g="-26,-6" />
+	</decision>
+	<end name="end1" g="379,204,48,48" />
+	<state name="客服消息" g="176,243,92,52">
+		<transition name="to end2" to="end2" g="-26,-10" />
+	</state>
+	<end name="end2" g="196,357,48,48" />
+</process>

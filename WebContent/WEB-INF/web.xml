@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name></display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- 配置初始化监听器 -->
+	<listener>
+		<listener-class>arch.web.listener.InitListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>weChat</servlet-name>
+		<servlet-class>arch.wechat.servlet.WeChatServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>weChat</servlet-name>
+		<url-pattern>/wechat/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>oauth</servlet-name>
+		<servlet-class>arch.wechat.servlet.OAuthServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>oauth</servlet-name>
+		<url-pattern>/oauth</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>qrcode</servlet-name>
+		<servlet-class>arch.wechat.servlet.QrcodeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>qrcode</servlet-name>
+		<url-pattern>/qrcode</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>service</servlet-name>
+		<servlet-class>arch.mulitservice.sevlet.ServiceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>service</servlet-name>
+		<url-pattern>/service</url-pattern>
+	</servlet-mapping>
+</web-app>

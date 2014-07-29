@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="testDecision" xmlns="http://jbpm.org/4.4/jpdl">
+	<!-- 流程实例启动事件 -->
+	<on event="start">
+		<event-listener class="arch.jbpm.eventListener.ProcessStartEvent" />
+	</on>
+	<!-- 流程实例结束事件 -->
+	<on event="end">
+		<event-listener class="arch.jbpm.eventListener.ProcessEndEvent" />
+	</on>
+	<start g="100,16,48,48" name="start1">
+		<transition g="-62,-12" name="to 接收消息" to="接收消息" />
+	</start>
+	<state g="78,96,92,52" name="接收消息">
+		<transition g="-33,-11" name="to exclusive1" to="exclusive1" />
+	</state>
+	<decision g="100,180,48,48" name="exclusive1">
+		<handler class="arch.jbpm.decision.BusinessTest1Decision" />
+		<transition g="-49,-11" name="to 客服消息" to="客服消息" />
+		<transition name="to end2" to="end2" g="-26,-12" />
+	</decision>
+	<state g="16,260,92,52" name="客服消息">
+		<transition g="-24,-13" name="to end1" to="end1" />
+	</state>
+	<end g="38,344,48,48" name="end1" />
+	<end g="213,182,48,48" name="end2" />
+</process>

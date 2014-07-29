@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="server2" xmlns="http://jbpm.org/4.4/jpdl">
+	<start name="start1" g="38,16,48,48">
+		<transition name="to 消息提示" to="消息提示" g="-69,-22" />
+	</start>
+	<task name="消息提示" g="16,96,92,52">
+		<transition name="to 处理消息" to="处理消息" g="-69,-22" />
+	</task>
+	<task name="处理消息" g="16,180,92,52">
+		<transition name="to 消息还可以" to="消息还可以" g="-81,-22" />
+	</task>
+	<task name="消息还可以" g="16,264,92,52">
+		<transition name="to end1" to="end1" g="-50,-22" />
+	</task>
+	<end name="end1" g="38,348,48,48" />
+</process>

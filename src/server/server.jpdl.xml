@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="server" xmlns="http://jbpm.org/4.4/jpdl">
+	<start g="100,16,48,48" name="start1">
+		<transition name="to 消息提示" to="消息提示" g="-69,-22" />
+	</start>
+	<state g="78,96,92,52" name="消息提示">
+		<on event="start">
+			<event-listener class="cn.tek.jbpm.eventListener.ServerEventLisImpl">
+			</event-listener>
+		</on>
+		<transition name="to exclusive1" to="exclusive1" g="-79,-22" />
+	</state>
+	<decision g="100,180,48,48" name="exclusive1">
+		<handler class="cn.tek.jbpm.decision.ServiceDecisionImpl" />
+		<transition name="to 客服消息" to="客服消息" g="-56,-5" />
+		<transition name="to 其他消息" to="其他消息" g="-11,-11" />
+	</decision>
+	<state g="16,260,92,52" name="客服消息">
+		<transition name="to end1" to="end1" g="-50,-22" />
+	</state>
+	<state g="140,260,92,52" name="其他消息">
+		<transition name="to end2" to="end2" g="-50,-22" />
+	</state>
+	<end g="38,344,48,48" name="end1" />
+	<end g="162,344,48,48" name="end2" />
+</process>
