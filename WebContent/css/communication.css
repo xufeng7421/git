@@ -1,4 +1,4 @@
-#dialog label,#dialog input {
+#dialog label, #dialog input {
 	display: block;
 }
 
@@ -6,7 +6,7 @@
 	margin-top: 0.5em;
 }
 
-#dialog input,#dialog textarea {
+#dialog input, #dialog textarea {
 	width: 95%;
 }
 
